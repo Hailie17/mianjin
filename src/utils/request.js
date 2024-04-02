@@ -8,5 +8,7 @@ const request = axios.create({
   timeout: 5000
 })
 
+// 请求拦截器
+
 // 3. 导出
 export default request

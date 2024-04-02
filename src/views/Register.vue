@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import request from '@/utils/request'
+import { registerAPI } from '@/api/user'
 export default {
   name: 'register-page',
   data() {
@@ -31,12 +31,18 @@ export default {
   },
   methods: {
     async onSubmit(values) {
-      const res = await request({
-        method: 'POST',
-        url: '/h5/user/register',
-        data: values
-      })
-      console.log(res)
+      try {
+        await registerAPI(values)
+        this.$toast('注册成功')
+        this.username = this.password = ''
+        this.$router.push('/login')
+      } catch (error) {
+        if (error.response) {
+          this.$toast(error.response.data.message)
+        } else {
+          this.$toast('注册失败')
+        }
+      }
     }
   },
   mounted() {
