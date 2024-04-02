@@ -9,3 +9,8 @@ export function registerAPI(data) {
     data: data
   })
 }
+
+// 登录
+export function loginAPI(data) {
+  return request.post('/h5/user/login', data)
+}

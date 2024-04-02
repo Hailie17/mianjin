@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { loginAPI } from '@/api/user'
 export default {
   name: 'login-page',
   data() {
@@ -29,8 +30,21 @@ export default {
     }
   },
   methods: {
-    onSubmit(values) {
-      console.log('submit', values)
+    async onSubmit(values) {
+      try {
+        const res = await loginAPI(values)
+        console.log(res)
+        localStorage.setItem('mobile-token', res.data.data.token)
+        this.$toast('登录成功')
+        this.username = this.password = ''
+        this.$router.push('/')
+      } catch (error) {
+        if (error.response) {
+          this.$toast(error.response.data.message)
+        } else {
+          this.$toast('登录失败')
+        }
+      }
     }
   },
   mounted() {
