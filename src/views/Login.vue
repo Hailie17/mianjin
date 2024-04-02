@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
     <!-- 标题 -->
-    <van-nav-bar title="标题" />
+    <van-nav-bar title="登录" />
     <!-- 表单 -->
     <van-form @submit="onSubmit">
       <van-field v-model="username" name="username" label="用户名" placeholder="用户名" :rules="userRules" />
@@ -11,7 +11,7 @@
       </div>
     </van-form>
     <!-- 超链接 -->
-    <router-link to="/register" class="link">还没有账号？去登录</router-link>
+    <router-link to="/register" class="link">还没有账号？去注册</router-link>
   </div>
 </template>
 
