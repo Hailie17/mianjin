@@ -3,8 +3,36 @@
 </template>
 
 <script>
+import { articleAPI } from '@/api/article'
 export default {
-  name: 'article-page'
+  name: 'article-page',
+  data() {
+    return {
+      current: 1,
+      sorter: 'weight_desc',
+      list: []
+    }
+  },
+  created() {
+    this.getArticleList()
+  },
+  methods: {
+    async getArticleList() {
+      try {
+        const res = await articleAPI({
+          current: this.current,
+          sorter: this.sorter
+        })
+        this.list = res.data.rows
+      } catch (error) {
+        if (error.response) {
+          this.$toast(error.response.data.message)
+        } else {
+          this.$toast('数据获取失败')
+        }
+      }
+    }
+  }
 }
 </script>
 
@@ -30,7 +58,7 @@ export default {
       position: relative;
       transition: all 0.3s;
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
