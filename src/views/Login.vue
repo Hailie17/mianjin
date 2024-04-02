@@ -23,8 +23,8 @@ export default {
       username: '',
       password: '',
       userRules: [
-        { required: true, message: '请填写用户名' },
-        { pattern: /~\w{2,10}$/, message: '请输入2-10位的用户名' }
+        { required: true, message: '请填写用户名' }
+        // { pattern: /~\w{2,10}$/, message: '请输入2-10位的用户名' }
       ]
     }
   },
