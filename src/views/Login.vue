@@ -4,9 +4,11 @@
 
 <script>
 export default {
-  name: 'login-page'
+  name: 'login-page',
+  mounted() {
+    this.$toast('登录成功')
+  }
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
