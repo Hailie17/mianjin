@@ -1,5 +1,21 @@
 <template>
-  <div class="article-page">面经列表页</div>
+  <div class="article-page">
+    <!-- 导航栏 -->
+    <nav class="my-nav van-hairlie--bottom">
+      <a href="#">推荐</a>
+      <a href="#">最新</a>
+      <div class="logo">
+        <img src="@/assets/logo.png" alt="" />
+      </div>
+    </nav>
+  </div>
+  <van-cell class="article-item">
+    <template #title>
+      <div class="head">
+        <img src="" alt="" />
+      </div>
+    </template>
+  </van-cell>
 </template>
 
 <script>
