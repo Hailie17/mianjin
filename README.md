@@ -4,6 +4,14 @@
 
 12
 
+## api document
+
+https://apifox.com/apidoc/project-934563/api-19465917
+
+- [移动端线上演示](http://www.itcbc.com:3008/#/login)
+
+- [PC 端线上演示](http://www.itcbc.com:3009/#/login)
+
 ## Project setup
 
 ```
