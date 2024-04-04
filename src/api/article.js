@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 export function articleAPI(params) {
-  request({
+  return request({
     url: '/h5/interview/query',
     method: 'GET',
     params: params

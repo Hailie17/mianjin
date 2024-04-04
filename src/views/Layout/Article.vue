@@ -8,14 +8,8 @@
         <img src="@/assets/logo.png" alt="" />
       </div>
     </nav>
+    <ArticleItem></ArticleItem>
   </div>
-  <van-cell class="article-item">
-    <template #title>
-      <div class="head">
-        <img src="" alt="" />
-      </div>
-    </template>
-  </van-cell>
 </template>
 
 <script>
@@ -39,7 +33,7 @@ export default {
           current: this.current,
           sorter: this.sorter
         })
-        this.list = res.data.rows
+        this.list = res.data.data.rows
       } catch (error) {
         if (error.response) {
           this.$toast(error.response.data.message)

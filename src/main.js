@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
 import ArticleItem from './views/components/ArticleItem.vue'
 import Vant from 'vant'
 import 'vant/lib/index.css'
+import router from './router'
 
 Vue.component('ArticleItem', ArticleItem)
 Vue.use(Vant)

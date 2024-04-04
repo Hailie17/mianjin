@@ -33,7 +33,6 @@ export default {
     async onSubmit(values) {
       try {
         const res = await loginAPI(values)
-        console.log(res)
         localStorage.setItem('mobile-token', res.data.data.token)
         this.$toast('登录成功')
         this.username = this.password = ''
