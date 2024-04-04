@@ -8,7 +8,7 @@
         <img src="@/assets/logo.png" alt="" />
       </div>
     </nav>
-
+    <!-- 列表 -->
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <ArticleItem v-for="item in list" :key="item.id" :item="item"></ArticleItem>
     </van-list>
@@ -36,6 +36,11 @@ export default {
           sorter: this.sorter
         })
         this.list.push(...res.data.data.rows)
+        this.loading = false
+        this.current++
+        if (this.current > res.data.data.pageTotal) {
+          this.finished = true
+        }
       } catch (error) {
         if (error.response) {
           this.$toast(error.response.data.message)
