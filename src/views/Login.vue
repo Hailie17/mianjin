@@ -57,6 +57,6 @@ export default {
   float: right;
   padding-right: 10px;
   font-size: 14px;
-  color: #1989fa;
+  color: @blue;
 }
 </style>
