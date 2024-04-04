@@ -14,7 +14,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/login', component: Login },
   { path: '/register', component: Register },
-  { path: '/detail', component: Detail },
+  { path: '/detail/:id', component: Detail },
   {
     path: '/',
     redirect: '/article',

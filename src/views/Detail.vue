@@ -2,14 +2,14 @@
   <div class="detail-page">
     <van-nav-bar left-text="返回" @click-left="$router.back()" fixed title="面经详细" />
     <header class="header">
-      <h1>标题</h1>
-      <p>创建时间 | 432 浏览量 | 45 点赞数</p>
+      <h1>{{ article.stem }}</h1>
+      <p>创建时间 {{ article.createdAt }} | {{ article.views }} 浏览量 | {{ article.likeCount }} 点赞数</p>
       <p>
-        <img src="123.jpg" alt />
-        <span>作者</span>
+        <img :src="article.avatar" alt />
+        <span>{{ article.creator }}</span>
       </p>
     </header>
-    <main class="body">内容</main>
+    <main class="body" v-html="article.content"></main>
     <div class="opt">
       <van-icon name="like-o" />
       <van-icon name="star-o" />
@@ -18,8 +18,24 @@
 </template>
 
 <script>
+import { detailAPI } from '@/api/article'
 export default {
-  name: 'detail-page'
+  name: 'detail-page',
+  data() {
+    return {
+      article: {}
+    }
+  },
+  created() {
+    this.getDetail()
+  },
+  methods: {
+    async getDetail() {
+      const { data } = await detailAPI(this.$route.params.id)
+      console.log(data, 'res')
+      this.article = data.data
+    }
+  }
 }
 </script>
 
