@@ -1,4 +1,5 @@
 // 1. 导入
+import router from '@/router'
 import axios from 'axios'
 
 // 2. 配置
@@ -17,6 +18,18 @@ request.interceptors.request.use(
   },
   function (error) {
     // 对请求错误做些什么
+    return Promise.reject(error)
+  }
+)
+
+// 响应拦截器
+request.interceptors.response.use(
+  function (response) {},
+  function (error) {
+    if (error.response && error.response.code === 401) {
+      localStorage.removeItem('mobile-token')
+      router.push('/login')
+    }
     return Promise.reject(error)
   }
 )

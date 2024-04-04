@@ -32,4 +32,12 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (!localStorage.getItem('mobile-token') && to.path !== '/login' && to.path !== '/register') {
+    next('/login')
+    return
+  }
+  next()
+})
+
 export default router
