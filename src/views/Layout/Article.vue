@@ -51,6 +51,10 @@ export default {
     },
     changeSorter(sorter) {
       this.sorter = sorter
+      this.current = 1
+      this.list = []
+      this.loading = true // 避免重复发请求
+      this.onLoad()
     }
   }
 }

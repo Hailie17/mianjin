@@ -1,5 +1,20 @@
 <template>
-  <div class="detail-page">详情页</div>
+  <div class="detail-page">
+    <van-nav-bar left-text="返回" @click-left="$router.back()" fixed title="面经详细" />
+    <header class="header">
+      <h1>标题</h1>
+      <p>创建时间 | 432 浏览量 | 45 点赞数</p>
+      <p>
+        <img src="123.jpg" alt />
+        <span>作者</span>
+      </p>
+    </header>
+    <main class="body">内容</main>
+    <div class="opt">
+      <van-icon name="like-o" />
+      <van-icon name="star-o" />
+    </div>
+  </div>
 </template>
 
 <script>
