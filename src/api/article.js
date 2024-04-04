@@ -19,3 +19,8 @@ export function detailAPI(id) {
     }
   })
 }
+
+// 点赞 收藏
+export function collectAndLickAPI(data) {
+  return request.post('/h5/interview/opt', data)
+}
