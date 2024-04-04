@@ -11,7 +11,7 @@
     </template>
     <template #label>
       <div class="body van-multi-ellipsis--l2">
-        {{ item.content }}
+        {{ delHtmlTag(item.content) }}
       </div>
       <div class="foot">点赞 {{ item.likeCount }} | 浏览 {{ item.views }}</div>
     </template>
@@ -29,6 +29,11 @@ export default {
       // default: () => {
       //   return {}
       // }
+    }
+  },
+  methods: {
+    delHtmlTag(html) {
+      return html.replace(/<[^>]+>/g, '')
     }
   }
 }
