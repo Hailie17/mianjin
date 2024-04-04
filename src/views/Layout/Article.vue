@@ -2,8 +2,8 @@
   <div class="article-page">
     <!-- 导航栏 -->
     <nav class="my-nav van-hairlie--bottom">
-      <a href="#">推荐</a>
-      <a href="#">最新</a>
+      <a href="#" :class="{ active: sorter === 'weight_desc' }" @click="changeSorter('weight_desc')">推荐</a>
+      <a href="#" :class="{ active: sorter === null }" @click="changeSorter(null)">最新</a>
       <div class="logo">
         <img src="@/assets/logo.png" alt="" />
       </div>
@@ -48,6 +48,9 @@ export default {
           this.$toast('数据获取失败')
         }
       }
+    },
+    changeSorter(sorter) {
+      this.sorter = sorter
     }
   }
 }
