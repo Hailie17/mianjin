@@ -24,3 +24,11 @@ export function detailAPI(id) {
 export function collectAndLickAPI(data) {
   return request.post('/h5/interview/opt', data)
 }
+
+// 收藏列表
+export function collectLikeListAPI(params) {
+  return request({
+    url: '/h5/interview/opt/list',
+    params: params
+  })
+}
