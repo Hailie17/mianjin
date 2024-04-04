@@ -8,7 +8,10 @@
         <img src="@/assets/logo.png" alt="" />
       </div>
     </nav>
-    <ArticleItem v-for="item in list" :key="item.id" :item="item"></ArticleItem>
+
+    <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+      <ArticleItem v-for="item in list" :key="item.id" :item="item"></ArticleItem>
+    </van-list>
   </div>
 </template>
 
@@ -20,20 +23,19 @@ export default {
     return {
       current: 1,
       sorter: 'weight_desc',
-      list: []
+      list: [],
+      finished: false,
+      loading: false
     }
   },
-  created() {
-    this.getArticleList()
-  },
   methods: {
-    async getArticleList() {
+    async onLoad() {
       try {
         const res = await articleAPI({
           current: this.current,
           sorter: this.sorter
         })
-        this.list = res.data.data.rows
+        this.list.push(...res.data.data.rows)
       } catch (error) {
         if (error.response) {
           this.$toast(error.response.data.message)
